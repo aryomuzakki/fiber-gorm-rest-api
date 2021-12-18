@@ -5,6 +5,7 @@ import (
 	"fiber-gorm-rest-api/database"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -39,6 +40,9 @@ func main() {
 
 	// Create table for Address
 	// migrate()
+
+	// Enable CORS
+	app.Use(cors.New())
 
 	// Routes
 	app.Get("/addresses", address.GetAll)
